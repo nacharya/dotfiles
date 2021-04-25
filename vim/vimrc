@@ -150,7 +150,7 @@ set comments=sr:/*,mb:*,ex:*/,://
 let c_space_errors=1
 
 " Languages we care right now:
-" C, C++, Python, JavaScript, Go
+" C, C++, Python, JavaScript, Go, F#
 
 autocmd FileType python set ts=4 sw=4 expandtab nocin nosi ai
 autocmd FileType python setlocal makeprg=pylint\ --output-format=parseable

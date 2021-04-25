@@ -25,6 +25,18 @@
 		"TAG" : "minio"
 	},
 	{
+		"NAME" : "az",
+		"STORE_TYPE" :"azblobstore",
+		"ACCESS" : "XXXXXX",
+		"SECRET" : "YYYYYYYYYYYYYYYYYY",
+		"REGION" : "us-west-2",
+		"ENDPOINT" : "https://storagexx/azure/com",
+		"TOKEN" : "BCADDD34216",
+		"SSL" : "False",
+		"BUCKET" : "smallbucket",
+		"TAG" : "azure"
+	},
+	{
 		"NAME" : "ix",
 		"STORE_TYPE" :"FS",
 		"TOKEN" : "ECBBDD3499",

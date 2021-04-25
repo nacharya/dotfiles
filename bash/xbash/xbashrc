@@ -6,25 +6,25 @@ LS_COLORS='di=0;35' ; export LS_COLORS
 OS=`uname -s`
 
 # Git env
-if [ ~/.xbash/git.env ]; then
+if [ ~/.xbash/gitenv ]; then
 	. ~/.xbash/gitenv
 fi
 
 # GO env
-if [ ~/.xbash/go.env ]; then
+if [ ~/.xbash/goenv ]; then
 	. ~/.xbash/goenv
 fi
 
 # Py env
-if [ ~/.xbash/py.env ]; then
+if [ ~/.xbash/pyenv ]; then
 	. ~/.xbash/pyenv
 fi
 
 # ML specific
 
-NOTEBOOKS=/home/user/notebooks
-DATASETS=/home/user/datasets
-SRCDIR=/home/user/src
+NOTEBOOKS=/home/$USER/data/notebooks
+DATASETS=/home/$USER/data/datasets
+SRCDIR=/home/$USER/data/repos
 
 # Edge
 

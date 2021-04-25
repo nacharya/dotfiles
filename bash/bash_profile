@@ -1,4 +1,4 @@
 # load the dotfiles xbashrc
 if [ -f ~/.xbash/xbashrc ]; then
-		. ~/.xbash/xbashrc
+	. ~/.xbash/xbashrc
 fi

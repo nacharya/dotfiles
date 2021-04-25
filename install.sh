@@ -31,7 +31,15 @@ create()
 			cp ${THIS_DIR}/screen/screenrc ~/.screenrc
 	fi
 	if [ $1 = "bash" ]; then
-			cp ${THIS_DIR}/bash/bash_profile ~/.bash_profile
+			if [ ! -f ~/.bash_profile ]; then
+				cp ${THIS_DIR}/bash/bash_profile ~/.bash_profile
+				echo "~/.xbash/xbashrc please add the following to ~/.bash_profile"
+				echo ""
+				echo "if [ -f ~/.xbash/xbashrc ]; then"
+				echo "		. ~/.xbash/xbashrc"
+				echo "fi"
+			fi
+
 			mkdir -p ~/.xbash
 			cp ${THIS_DIR}/bash/xbash/xbashrc ~/.xbash/xbashrc
 			cp ${THIS_DIR}/bash/xbash/*env ~/.xbash/
@@ -46,7 +54,7 @@ create()
 			cp ${THIS_DIR}/gitconfig/gitconfig ~/.gitconfig
 	fi
 	if [ $1 = "sp3" ]; then
-			cp ${THIS_DIR}/sp3/sp3e ~/.sp3e
+			cp ${THIS_DIR}/sp3/sp3 ~/.sp3
 	fi
 	if [ $1 = "gdb" ]; then
 			cp ${THIS_DIR}/gdb/gdbinit ~/.gdbinit
@@ -248,15 +256,15 @@ case $1 in
         exit 0
         ;;
     "clobber")
-	shift
-	clobber "$@"
-	exit 0
-	;;
+		shift
+		clobber "$@"
+		exit 0
+		;;
     "backup")
-	shift
-	backup "$@"
-	exit 0
-	;;
+		shift
+		backup "$@"
+		exit 0
+		;;
     -h | --help)
         usage
         exit 0

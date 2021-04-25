@@ -11,7 +11,7 @@
 	clean = git-lfs clean -- %f
 [user]
 	name = Nabin Acharya
-	email = nabin.acharya@nexenta.com
+	email = nabin.acharya@gmail.com
 [push]
 	default = matching
 [color]

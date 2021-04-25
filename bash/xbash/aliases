@@ -8,8 +8,7 @@ alias tmls="tmux list-sessions"
 alias tma="tmux attach-session -t"
 alias tmk="tmux kill-session -t"
 
-alias glog="git log --pretty=oneline"
-
+# jupyter ones
 alias jlab="jupyter-lab"
 
 # convert bulk of *.HEIC file to *.jpg files

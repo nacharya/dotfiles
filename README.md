@@ -9,3 +9,8 @@ dot files for commonly used software programs
 - sp3
 - tmux
 - vim
+
+OS Platforms
+- Linux ( Ubuntu ) 
+- Windows 10 Pro 
+- Mac OSX  ( Big Sur ) 
