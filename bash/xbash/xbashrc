@@ -5,6 +5,11 @@ LS_COLORS='di=0;35' ; export LS_COLORS
 # find the OS we are on
 OS=`uname -s`
 
+# Aliases
+if [ ~/.xbash/aliases ]; then
+	. ~/.xbash/aliases
+fi
+
 # Git env
 if [ ~/.xbash/gitenv ]; then
 	. ~/.xbash/gitenv
@@ -22,9 +27,21 @@ fi
 
 # ML specific
 
-NOTEBOOKS=/home/$USER/data/notebooks
-DATASETS=/home/$USER/data/datasets
-SRCDIR=/home/$USER/data/repos
+if [ ! -d /Users/$USER/data ]; then
+	mkdir /Users/$USER/data
+else
+	if [ ! -d /Users/$USER/data/notebooks ]; then
+		mkdir /Users/$USER/data/notebooks
+	fi
+	if [ ! -d /Users/$USER/data/datasets ]; then
+		mkdir /Users/$USER/data/datasets
+	fi
+fi
+
+# main env stuff
+#
+NOTEBOOKS=/Users/$USER/data/notebooks
+DATASETS=/Users/$USER/data/datasets
 
 # Edge
 
