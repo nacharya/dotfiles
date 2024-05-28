@@ -1,0 +1,42 @@
+# Load Go Lang fist
+
+# create a GO environment
+#export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go # don't forget to change your path correctly!
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$GOPATH/bin
+
+GO_VERS=`go version`
+
+# Go related
+if [ ! -d $GOPATH ]; then 
+	mkdir -p $GOPATH $GOPATH/src $GOPATH/pkg $GOPATH/bin
+fi
+
+deps()
+{
+	go list -f '{{ join .Deps  "\n"}}' . | grep $1
+}
+
+imports()
+{
+	go list -f '{{ join .Imports "\n" }}' $1
+}
+
+# Now to Python3
+# with 3.11 it is now called python only -- Finally !
+PY=python3
+PYVERS=`$PY --version`
+echo "snakes" $PYVERS
+
+alias mk_npenv="python -m venv ~/npenv; source ~/npenv/bin/activate"
+alias act_npenv="source ~/npenv/bin/activate"
+alias deact_npenv="deactivate"
+
+function rm_npenv() {
+	if [ -d ~/npenv ]; then
+		rm -rf ~/npenv
+	fi
+}
+
+alias del_npenv=rm_npenv

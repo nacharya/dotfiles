@@ -1,0 +1,49 @@
+# change the ls colors, blue is hard to see
+LS_COLORS='di=0;35' ; export LS_COLORS
+
+# 
+if [ -f ~/.config/xenv/env ]; then
+  . ~/.config/xenv/env
+fi
+
+
+# find the OS we are on
+OS=`uname -s`
+MARCH=`uname -m`
+
+if [ -f ~/.config/xenv/aliases ]; then
+	. ~/.config/xenv/aliases
+fi
+
+# moved this to .bash_profile
+if [ -f ~/.config/xenv/gitenv ]; then
+	. ~/.config/xenv/gitenv
+fi
+#
+if [ -f ~/.config/xenv/langenv ]; then
+	. ~/.config/xenv/langenv
+fi
+
+# All Mac OS X, Sort out Arch x86_64 vs ARM
+if [ $OS == "Darwin" ]; then
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+  echo $OS $USER $TERM_PROGRAM $MARCH
+  # set path according to installed apps from homebrew
+  export PATH=/opt/homebrew/bin:${PATH}
+  # adding a path to visual studio so we can call it from Command line
+  export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+  # now add the personal stuff
+  BINPATH=$OS"_"$MARCH
+  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+fi
+
+# All Linux , Sort out Arch and types internally. 
+if [ $OS == "Linux" ]; then
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+  echo $OS $USER $TERM_PROGRAM $MARCH
+
+  BINPATH=$OS"_"$MARCH
+  export PATH=/usr/local/bin:${PATH}
+  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+
+fi

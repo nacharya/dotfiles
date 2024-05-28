@@ -1,0 +1,8 @@
+[core]
+account = foo@bar.com
+project = tee-off
+
+[compute]
+zone = us-west4-b
+region = us-west4
+

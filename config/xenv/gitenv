@@ -1,0 +1,44 @@
+
+# git related
+if [ -f ~/.git-completion.bash ]; then
+	. ~/.git-completion.bash
+fi
+
+# setup the git branch name in the prompt
+#
+function parse_git_branch () 
+{
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+function parse_git_tag () 
+{
+	git describe --tags 2> /dev/null
+}
+
+function parse_git_branch_or_tag() 
+{
+	local OUT="$(parse_git_branch)"
+	if [ "$OUT" == " ((no branch))" ]; then
+		OUT="($(parse_git_tag))";
+	fi
+	echo $OUT
+}
+
+# two lines prompt 
+# first line is the current working directory
+# second line user@host: git branch name
+PS1="\[\e[33m\]\w\n\u\[\033[m\]@\[\033[32m\]\h:\[\033[01;31m\]$(parse_git_branch_or_tag)\[\033[00m\] % "
+
+# One line version for reference only
+# PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ "
+
+#
+# git aliases
+alias glog='git log --pretty=oneline'
+alias ginfo='git remote show origin'
+alias ginfo_='git remote show origin -n | grep "Fetch URL:" | sed -E "s#^.*/(.*)$#\1#" | sed "s#.git$##"'
+
+alias gldel='git branch -d'
+alias grdel='git push origin --delete'
+
