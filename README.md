@@ -1,16 +1,34 @@
-# config
+# dotfiles
+
 dot files for commonly used software programs
+and working environment primarily around command line 
+and some software programs
 
-- aws
-- bash
-- gdb
-- gitconfig
-- screen
-- sp3
+## Components
+
+- cloud
+    - aws, azure, gcp 
+
+- environments 
+    - git
+    - go
+    - Python3
+    - Rust
+    - bash
 - tmux
-- vim
+- neovim
 
-OS Platforms
-- Linux ( Ubuntu ) 
-- Windows 10 Pro 
-- Mac OSX  ( Big Sur ) 
+## OS Platforms
+- Linux ( Ubuntu24.04+, Debian12+ ) 
+- Windows 12 Pro+ with WSLv2 
+- Mac OSX  ( Sonoma+ ) 
+
+## Installation 
+
+
+
+## Security 
+
+
+
+

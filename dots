@@ -1,7 +1,16 @@
 #!/bin/bash
 
 function usage() {
-    echo $0 "[ install remove backup restore ] [ cloud base ]"
+    echo $0 "< commands > < components >"
+    echo $0 "[ install | remove | backup | restore ] [ cloud | base ]"
+    echo "Commands:"
+    echo "         install"
+    echo "         remove"
+    echo "         backup"
+    echo "         restore"
+    echo "Components:"
+    echo "         cloud"
+    echo "         base"
 }
 
 function install_base() {
@@ -14,6 +23,8 @@ function install_base() {
 
     if [ -f ~/.bash_profile ]; then 
         cat bash_profile >> .bash_profile
+    else
+	    cp bash_profile ~/.bash_profile
     fi
 }
 function remove_base() {
@@ -62,6 +73,7 @@ function install() {
         -h | --help)
             echo "install [ cloud | base ]"
             exit 0
+	        ;;
         *)
             echo "Unknown: " $1
             exit 1
@@ -85,6 +97,7 @@ function remove() {
         -h | --help)
             echo "remove [ cloud | base ]"
             exit 0
+	    ;;
         *)
             echo "Unknown: " $1
             exit 1
@@ -133,15 +146,15 @@ case $1 in
         exit 0
         ;;
     "backup")
-		shift
-		backup "$@"
-		exit 0
-		;;
+	    shift
+	    backup "$@"
+	    exit 0
+	    ;;
     "restore")
-		shift
-		restore "$@"
-		exit 0
-		;;
+	    shift
+	    restore "$@"
+	    exit 0
+	    ;;
     -h | --help)
         usage
 esac

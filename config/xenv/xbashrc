@@ -21,6 +21,13 @@ if [ -f ~/.config/xenv/gitenv ]; then
 fi
 #
 if [ -f ~/.config/xenv/langenv ]; then
+    if [ $OS == "Darwin" ]; then
+        export PATH=${PATH}:/opt/homebrew/bin
+    fi
+    if [ $OS == "Linux" ]; then
+        export PATH=${PATH}:/usr/local/go/bin
+    fi
+    . ~/.cargo/env
 	. ~/.config/xenv/langenv
 fi
 
