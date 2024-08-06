@@ -2,8 +2,9 @@
 
 function usage() {
     echo $0 "< commands > < components >"
-    echo $0 "[ install | remove | backup | restore ] [ cloud | base ]"
+    echo $0 "[ show | install | remove | backup | restore ] [ cloud | base ]"
     echo "Commands:"
+    echo "         show"
     echo "         install"
     echo "         remove"
     echo "         backup"
@@ -12,6 +13,12 @@ function usage() {
     echo "         cloud"
     echo "         base"
 }
+
+function show() {
+  echo "show" $1
+
+}
+
 
 function install_base() {
     echo "base" $1
@@ -33,6 +40,31 @@ function remove_base() {
         rm -rf ~/.config/xenv
     fi
 }
+
+function install_pkg() {
+  echo "install_pkg" $1
+  PKGLIST="git tmux neovim fish curl pkgconfig"
+  OS=`uname -s`
+  if [ $OS ==  "Darwin" ]; then
+    for p in ${PKGLIST}
+    do
+      brew install $p
+    done
+  fi
+  if [ $OS == "Linux" ]; then
+    for p in ${PKGLIST}
+    do
+      sudo apt install $p -y
+    done
+  fi
+}
+
+function install_ohmyfish() {
+  echo "Installing ohmyfish"
+  curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+}
+
 function install_cloud() {
     echo "cloud" $1 $2
     if [ ! -d ~/.aws ]; then
@@ -70,8 +102,13 @@ function install() {
             install_base $2
             exit 0
             ;;
+        "pkg") 
+            shift
+            install_pkg $2
+            exit 0
+            ;;
         -h | --help)
-            echo "install [ cloud | base ]"
+            echo "install [ cloud | base | pkg ]"
             exit 0
 	        ;;
         *)
@@ -135,6 +172,11 @@ if [ $# -eq 0 ]; then
 fi
 
 case $1 in
+    "show")
+        shift
+        show "$@"
+        exit 0
+        ;;
     "install")
         shift
         install "$@"

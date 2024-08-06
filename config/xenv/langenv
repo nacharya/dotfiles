@@ -38,5 +38,6 @@ function rm_npenv() {
 		rm -rf ~/npenv
 	fi
 }
-
 alias del_npenv=rm_npenv
+
+

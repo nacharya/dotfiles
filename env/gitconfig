@@ -2,16 +2,16 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
-	user = Nabin Acharya
-	email = n.acharya@opendrives.com
+	user = Foo Bar
+	email = foo.bar@gmail.com
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 [user]
-	name = Nabin Acharya
-	email = n.acharya@opendrives.com
+	name = Foo Bar
+	email = foo.bar@gmail.com
 [push]
 	default = matching
 [color]

@@ -1,4 +1,5 @@
-# this needs to be called from bashrc or bash_profile
+# ENtry point into the xenv ecosystem 
+# when using bash
 if [ -f ~/.config/xenv/xbashrc ]; then
     source ~/.config/xenv/xbashrc
 fi

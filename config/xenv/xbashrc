@@ -52,5 +52,6 @@ if [ $OS == "Linux" ]; then
   BINPATH=$OS"_"$MARCH
   export PATH=/usr/local/bin:${PATH}
   export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
-
 fi
+
+
