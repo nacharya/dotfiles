@@ -42,3 +42,5 @@ alias del_npenv=rm_npenv
 
 
 # Now to Rust
+RUST_VERS=`rustc --version`
+echo "rusty" $RUST_VERS

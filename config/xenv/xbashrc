@@ -21,14 +21,14 @@ if [ -f ~/.config/xenv/gitenv ]; then
 fi
 #
 if [ -f ~/.config/xenv/langenv ]; then
-    if [ $OS == "Darwin" ]; then
-        export PATH=${PATH}:/opt/homebrew/bin
+    # go lang
+    export PATH=${PATH}:/usr/local/go/bin
+    
+    # Rust
+    if [ -f ~/.cargo/env ]; then
+        . ~/.cargo/env
     fi
-    if [ $OS == "Linux" ]; then
-        export PATH=${PATH}:/usr/local/go/bin
-    fi
-    . ~/.cargo/env
-	. ~/.config/xenv/langenv
+	  . ~/.config/xenv/langenv
 fi
 
 # All Mac OS X, Sort out Arch x86_64 vs ARM

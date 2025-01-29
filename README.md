@@ -1,32 +1,38 @@
 # dotfiles
 
-dot files for commonly used software programs and working environment primarily around command line 
-and some software programs that have been very useful 
+dot files for commonly used software programs and working environment primarily around command line and some software programs that have been very useful
 
 ## Components
 
 - cloud
-    - aws, azure, gcp 
-
-- environments 
-    - git
-    - go
-    - Python3
-    - Rust
-    - bash
-    - fish
-- tmux
-- neovim
-- VSCode 
+  - aws, azure, gcp
+- environments
+  - git
+  - go
+  - Python3
+  - Rust
+  - bash
+  - fish
+- terminals
+  - kitty
+  - tmux
+- editors
+  - neovim
+  - VSCode
+- browsers
+  - chrome
+  - firefox
+  - arc
 
 ## OS Platforms
-- Linux ( Ubuntu24.04+, Debian12+ ) 
-- Windows 12 Pro+ with WSLv2 
-- Mac OSX  ( Sonoma+ ) 
 
-## Installation 
+- Linux ( Ubuntu24.04+, Debian12+ )
+- Windows 12 Pro+ with WSLv2
+- Mac OSX  ( Sonoma+ )
 
-Use the dots scripts attached to install , show and remove the components 
+## Installation
+
+Use the dots scripts attached to install , show and remove the components
 
 ```bash
 % ./dots --help
@@ -44,8 +50,4 @@ Components:
 
 ```
 
-## Security 
-
-
-
-
+## Security
