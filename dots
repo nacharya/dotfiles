@@ -17,6 +17,46 @@ function usage() {
 function show() {
   echo "show" $1
 
+  case $1 in
+    "nvim")
+      if [ -d ~/.config/nvim ]; then
+        ls -l ~/.config/nvim/
+      else
+        echo "~/.config/nvim" "not found"
+      fi
+      ;;
+    "tmux")
+        if [ -d ~/.config/tmux ]; then
+            ls -l ~/.config/tmux/
+        else
+            echo "~/.config/tmux" "not found"
+        fi
+        ;;
+    "kitty")
+        if [ -d ~/.config/kitty ]; then
+            ls -l ~/.config/kitty/
+        else
+            echo "~/.config/kitty" "not found"
+        fi
+        ;;
+    "xenv")
+        if [ -d ~/.config/xenv ]; then
+            ls -l ~/.config/xenv/
+        else
+            echo "~/.config/xenv" "not found"
+        fi
+        ;;
+    *)
+        echo "Checking ~/.config"
+        ls -ld ~/.config/nvim/
+        ls -ld ~/.config/tmux/
+        ls -ld ~/.config/kitty/
+        if [ -d ~/.config/xenv/ ]; then
+          ls -ld ~/.config/xenv/
+        else
+          echo "~/.config/xenv" "not found"
+        fi
+  esac
 }
 
 
@@ -39,11 +79,20 @@ function remove_base() {
     if [ -d ~/.config/xenv ]; then
         rm -rf ~/.config/xenv
     fi
+    if [ -d ~/.config/nvim ]; then
+        rm -rf ~/.config/nvim
+    fi
+    if [ -d ~/.config/tmux ]; then
+        rm -rf ~/.config/tmux
+    fi
+    if [ -d ~/.config/kitty ]; then
+        rm -rf ~/.config/kitty
+    fi
 }
 
 function install_pkg() {
   echo "install_pkg" $1
-  PKGLIST="git tmux neovim fish curl pkgconfig"
+  PKGLIST="git tmux neovim fish curl kitty pkgconfig"
   OS=`uname -s`
   if [ $OS ==  "Darwin" ]; then
     for p in ${PKGLIST}
@@ -58,6 +107,26 @@ function install_pkg() {
     done
   fi
 }
+
+function remove_pkg() {
+    echo "remove_pkg" $1
+    PKGLIST="git tmux neovim fish curl pkgconfig"
+    OS=`uname -s`
+    if [ $OS ==  "Darwin" ]; then
+        for p in ${PKGLIST}
+        do
+            brew uninstall $p
+        done
+    fi
+    if [ $OS == "Linux" ]; then
+        for p in ${PKGLIST}
+        do
+            sudo apt remove $p -y
+        done
+    fi
+
+}
+
 
 function install_ohmyfish() {
   echo "Installing ohmyfish"
@@ -102,7 +171,7 @@ function install() {
             install_base $2
             exit 0
             ;;
-        "pkg") 
+        "pkg")
             shift
             install_pkg $2
             exit 0
@@ -129,6 +198,11 @@ function remove() {
         "cloud")
             shift 
             remove_cloud $2
+            exit 0
+            ;;
+        "pkg")
+            shift
+            remove_pkg $2
             exit 0
             ;;
         -h | --help)
