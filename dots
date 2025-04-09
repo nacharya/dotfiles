@@ -69,9 +69,9 @@ function install_base() {
     fi
 
     if [ -f ~/.bash_profile ]; then 
-        cat bash_profile >> .bash_profile
+        cat ./env/bash_profile >> ~/.bash_profile
     else
-	    cp bash_profile ~/.bash_profile
+	cp ./env/bash_profile ~/.bash_profile
     fi
 }
 function remove_base() {
@@ -89,6 +89,12 @@ function remove_base() {
         rm -rf ~/.config/kitty
     fi
 }
+
+# TODO:
+# Some of the packages needed had to be installed differently. 
+# e.g. neovim direct download versions are much much better that 
+# the one in apt install. 
+# go lang had to be installed directly. Same with rust 
 
 function install_pkg() {
   echo "install_pkg" $1
@@ -221,10 +227,15 @@ function backup() {
     if [ ! -d ~/.xbackup ]; then
         mkdir -p ~/.xbackup
     fi
-    cp -R ~/.config ~/.xbackup/
-    cp -R ~/.aws ~/.xbackup/
-    cp -R ~/.azure ~/.azure/
-
+    if [ -d ~/.config ]; then
+    	cp -R ~/.config ~/.xbackup/
+    fi
+    if [ -d ~/.aws ]; then
+    	cp -R ~/.aws ~/.xbackup/
+    fi
+    if [ -d ~/.azure ]; then
+    	cp -R ~/.azure ~/.azure/
+    fi
 }
 
 function restore() {
@@ -262,15 +273,15 @@ case $1 in
         exit 0
         ;;
     "backup")
-	    shift
-	    backup "$@"
-	    exit 0
-	    ;;
+	shift
+	backup "$@"
+	exit 0
+	;;
     "restore")
-	    shift
-	    restore "$@"
-	    exit 0
-	    ;;
+	shift
+	restore "$@"
+	exit 0
+	;;
     -h | --help)
         usage
 esac

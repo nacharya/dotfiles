@@ -27,7 +27,6 @@ imports()
 # with 3.11 it is now called python only -- Finally !
 PY=python3
 PYVERS=`$PY --version`
-echo "snakes" $PYVERS
 
 alias mk_npenv="python -m venv ~/npenv; source ~/npenv/bin/activate"
 alias act_npenv="source ~/npenv/bin/activate"
@@ -40,7 +39,8 @@ function rm_npenv() {
 }
 alias del_npenv=rm_npenv
 
-
 # Now to Rust
 RUST_VERS=`rustc --version`
-echo "rusty" $RUST_VERS
+
+# show all 
+echo "snakes" $PYVERS $GO_VERS $RUST_VERS

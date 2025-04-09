@@ -1,15 +1,24 @@
 # change the ls colors, blue is hard to see
 LS_COLORS='di=0;35' ; export LS_COLORS
 
+# find the OS we are on
+OS=`uname -s`
+MARCH=`uname -m`
+
+# make sure we have access to neovim
+if [ ${OS} == "Linux" ]; then
+   export PATH=${PATH}:/usr/local/nvim-linux-arm64/bin
+   NVIM_VERS=`nvim --version`
+fi
+
+if [ ${OS} == "Darwin" ]; then
+   NVIM_VERS=`nvim --version`
+fi
+
 # 
 if [ -f ~/.config/xenv/env ]; then
   . ~/.config/xenv/env
 fi
-
-
-# find the OS we are on
-OS=`uname -s`
-MARCH=`uname -m`
 
 if [ -f ~/.config/xenv/aliases ]; then
 	. ~/.config/xenv/aliases
