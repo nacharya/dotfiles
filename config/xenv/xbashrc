@@ -7,11 +7,17 @@ MARCH=`uname -m`
 
 # make sure we have access to neovim
 if [ ${OS} == "Linux" ]; then
-   export PATH=${PATH}:/usr/local/nvim-linux-arm64/bin
+   if [ ${MARCH} == "arm64" ]; then
+	export PATH=${PATH}:/usr/local/nvim-linux-arm64/bin
+   fi
+   if [ ${MARCH} == "x86_64" ]; then
+	export PATH=${PATH}:/usr/local/nvim-linux-x86_64/bin
+   fi
    NVIM_VERS=`nvim --version`
 fi
 
 if [ ${OS} == "Darwin" ]; then
+   # Note: it gets default install at /usr/local/bin
    NVIM_VERS=`nvim --version`
 fi
 
