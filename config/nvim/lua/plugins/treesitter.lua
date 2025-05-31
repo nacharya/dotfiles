@@ -36,6 +36,8 @@ return {
                 'tsx',
                 'css',
                 'html',
+                'query',
+                "c",
             },
 
             -- Autoinstall languages that are not installed

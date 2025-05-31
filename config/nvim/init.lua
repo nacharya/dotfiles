@@ -25,19 +25,24 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-    require 'plugins.telescope',
-    require 'plugins.treesitter',
-    require 'plugins.autocompletion',
-    require 'plugins.lsp',
-    require 'plugins.lualine',
-    require 'plugins.bufferline',
-    require 'plugins.neo-tree',
-    require 'plugins.indent-blankline',
     require 'plugins.colortheme',
     require 'plugins.alpha',
+    require 'plugins.oil',
+    require 'plugins.mini',
+    require 'plugins.telescope',
+    require 'plugins.markdown-preview',
+    require 'plugins.nvim-lspconfig',
+    require 'plugins.indent-blankline',
+    require 'plugins.treesitter',
+    require 'plugins.bufferline',
     require 'plugins.chatgpt',
+    require 'plugins.ollama',
+    require 'plugins.autocompletion',
+    require 'plugins.gitsigns',
+--    require 'plugins.copilotchat',
+    require 'plugins.avante',
+    require 'plugins.lualine',
     require 'plugins.misc',
-    require 'plugins.copilot',
 }, {
     ui = {
         -- If you have a Nerd Font, set icons to an empty table which will use the

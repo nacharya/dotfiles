@@ -109,6 +109,7 @@ vim.keymap.set('n', '<leader>do', function()
   end
 end)
 
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
@@ -119,8 +120,27 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
--- CHatGPT
+-- ChatGPT
 vim.keymap.set('n', '<leader>cg', ':ChatGPTEditWithInstructions<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>cga', ':ChatGPTActAs<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgc', ':ChatGPT<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cgc', ':ChatGPTRun complete_code<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cgo', ':ChatGPTRun optimize_code<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cgs', ':ChatGPTRun summarize<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cgx', ':ChatGPTRun explain_code<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cgb', ':ChatGPTRun fix_bugs<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>cggc', ':ChatGPTRun grammar_correction<CR>', { noremap = true, silent = false })
+
+-- Copilot
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+
+-- Ollama local queries 
+vim.keymap.set({ 'n', 'v' }, '<leader>oo', ':Gen<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>os', ':Gen Summarize<CR>')
+
+
+-- Oil for File Explorer and management
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>E", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>~", "<CMD>Oil --float ~/<CR>", { desc = "Open parent directory" })
 

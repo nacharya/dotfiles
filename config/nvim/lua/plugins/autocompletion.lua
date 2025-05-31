@@ -25,6 +25,5 @@ return {
   end,
   config = function()
     -- Your LSP settings here
-
   end,
 }

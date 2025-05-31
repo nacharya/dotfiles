@@ -66,6 +66,7 @@ return {
                 },
             },
             extensions = {
+                fzf = {},
                 ['ui-select'] = {
                     require('telescope.themes').get_dropdown(),
                 },
@@ -112,5 +113,12 @@ return {
                 previewer = false,
             })
         end, { desc = '[/] Fuzzily search in current buffer' })
+        vim.keymap.set("n", "<space>ep", function()
+            require('telescope.builtin').find_files {
+                -- cwd = vim.fn.joinpath(vim.fn.stdpath("data'), "lazy")
+            }
+        end, { desc = 'Explore Packages' })
+
+
     end,
 }
