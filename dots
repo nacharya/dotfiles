@@ -24,6 +24,7 @@ function versions() {
   kitty --version
   rustc --version
   go version
+  kubectl version
 }
 
 
@@ -106,9 +107,10 @@ function remove_base() {
     fi
 }
 
+PKGLIST="git tmux neovim fish curl kitty rustup golang kubectl"
+
 function install_pkg() {
   echo "install_pkg" $1
-  PKGLIST="git tmux neovim fish curl kitty rustup golang"
   OS=`uname -s`
   if [ $OS ==  "Darwin" ]; then
     for p in ${PKGLIST}
@@ -127,7 +129,6 @@ function install_pkg() {
 
 function remove_pkg() {
     echo "remove_pkg" $1
-    PKGLIST="git tmux neovim fish curl pkgconfig"
     OS=`uname -s`
     if [ $OS ==  "Darwin" ]; then
         for p in ${PKGLIST}
