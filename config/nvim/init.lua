@@ -43,6 +43,7 @@ require('lazy').setup({
     require 'plugins.avante',
     require 'plugins.lualine',
     require 'plugins.misc',
+    require 'plugins.mcphub',
 }, {
     ui = {
         -- If you have a Nerd Font, set icons to an empty table which will use the

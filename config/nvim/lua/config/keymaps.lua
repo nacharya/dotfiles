@@ -133,6 +133,10 @@ vim.keymap.set('n', '<leader>cggc', ':ChatGPTRun grammar_correction<CR>', { nore
 -- Copilot
 vim.keymap.set('i', '<C-l>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
 
+-- MCP Hub
+vim.keymap.set('n', '<leader>mcp', ':MCPHub<CR>', { noremap = true, silent = false })
+
+
 -- Ollama local queries 
 vim.keymap.set({ 'n', 'v' }, '<leader>oo', ':Gen<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>os', ':Gen Summarize<CR>')

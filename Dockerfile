@@ -35,6 +35,10 @@ RUN apt-get install -y nodejs
 RUN node --version
 RUN npm --version
 
+# install google gemini
+RUN npm install -g @google/gemini-cli
+
+
 # install golang
 RUN curl -fsSL https://golang.org/dl/go1.24.1.linux-arm64.tar.gz -o /tmp/go1.24.1.linux-arm64.tar.gz
 
