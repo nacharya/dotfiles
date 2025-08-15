@@ -14,6 +14,19 @@ function usage() {
     echo "         base"
 }
 
+function versions() {
+  echo "versions:"
+  git --version
+  tmux -V 
+  nvim --version
+  fish --version
+  curl --version
+  kitty --version
+  rustc --version
+  go version
+}
+
+
 function show() {
   echo "show" $1
 
@@ -57,6 +70,7 @@ function show() {
           echo "~/.config/xenv" "not found"
         fi
   esac
+  versions
 }
 
 
@@ -74,6 +88,8 @@ function install_base() {
 	cp ./env/bash_profile ~/.bash_profile
     fi
 }
+
+
 function remove_base() {
     echo "remove_base" $1
     if [ -d ~/.config/xenv ]; then
@@ -90,15 +106,9 @@ function remove_base() {
     fi
 }
 
-# TODO:
-# Some of the packages needed had to be installed differently. 
-# e.g. neovim direct download versions are much much better that 
-# the one in apt install. 
-# go lang had to be installed directly. Same with rust 
-
 function install_pkg() {
   echo "install_pkg" $1
-  PKGLIST="git tmux neovim fish curl kitty pkgconfig"
+  PKGLIST="git tmux neovim fish curl kitty rustup golang"
   OS=`uname -s`
   if [ $OS ==  "Darwin" ]; then
     for p in ${PKGLIST}
@@ -112,6 +122,7 @@ function install_pkg() {
       sudo apt install $p -y
     done
   fi
+  rustup default stable
 }
 
 function remove_pkg() {
@@ -130,7 +141,6 @@ function remove_pkg() {
             sudo apt remove $p -y
         done
     fi
-
 }
 
 
