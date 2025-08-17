@@ -76,6 +76,62 @@ return {
           { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
       }
   },
+  {
+      "olimorris/codecompanion.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      opts = {
+        log_level = "DEBUG",
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown", "codecompanion" },
+        strategies = {
+          chat = {
+            adapter = "copilot",
+            keymaps = {
+              send = {
+                modes = { n = "<C-s>", i = "<C-s>" },
+                opts = {},
+              },
+              close = {
+                modes = { n = "<C-c>", i = "<C-c>" },
+                opts = {},
+              },
+            }
+          },
+          inline = {
+            adapter = "copilot",
+          },
+          agent = {
+            adapter = "copilot",
+          },
+          agent = {
+            adapter = "copilot",
+          },
+        },
+      },
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            make_vars = true,
+            make_slash_commands = true,
+            show_result_in_chat = true
+          }
+        }
+      },
+    },
+    {
+      "echasnovski/mini.diff",
+      config = function()
+        local diff = require("mini.diff")
+        diff.setup({
+         -- Disabled by default
+         source = diff.gen_source.none(),
+        })
+      end,
+    },
   -- {
     -- All the LazyExtras go here 
     -- { import = "lazyvim.plugins.extras.ui.mini-starter" },

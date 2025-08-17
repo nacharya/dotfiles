@@ -136,6 +136,9 @@ vim.keymap.set('i', '<C-l>', 'copilot#Accept("<CR>")', { silent = true, expr = t
 -- MCP Hub
 vim.keymap.set('n', '<leader>mcp', ':MCPHub<CR>', { noremap = true, silent = false })
 
+-- Codecompanion
+vim.keymap.set('n', '<leader>acc', ':CodeCompanionChat<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>aca', ':CodeCompanionAction<CR>', { noremap = true, silent = false })
 
 -- Ollama local queries 
 vim.keymap.set({ 'n', 'v' }, '<leader>oo', ':Gen<CR>')
@@ -148,3 +151,16 @@ vim.keymap.set("n", "<leader>E", "<CMD>Oil --float<CR>", { desc = "Open parent d
 vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>~", "<CMD>Oil --float ~/<CR>", { desc = "Open parent directory" })
 
+-- Get a random string from /dev/urandom
+vim.keymap.set('n', '<leader>ur', function()
+  local handle = io.popen('head -c 16 /dev/urandom | base64')
+  local random_string = handle:read('*a')
+  handle:close()
+  vim.api.nvim_put({ random_string }, 'c', true, true)
+end, { noremap = true, silent = true, desc = 'Insert random string from /dev/urandom' })
+
+
+-- Hex Editor
+-- Start editor as `% vim -b filename`
+vim.keymap.set('n', '<leader>hex', ':%!xxd<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rhex', ':%!xxd -r<CR>', { noremap = true, silent = false })

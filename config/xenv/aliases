@@ -7,3 +7,13 @@ alias tma="tmux attach-session -t"
 alias tmk="tmux kill-session -t"
 alias tmrls='ls ~/.local/share/tmux/resurrect/'
 
+# ranger
+alias r="ranger"
+
+# lima and colima
+#
+alias cstart="colima start --arch aarch64 --vm-type=vz --vz-rosetta --mount-type 9p"
+
+# posting like postman, httpie, curl etc
+# installed using % uv tool install posting
+alias posting="uvx posting"

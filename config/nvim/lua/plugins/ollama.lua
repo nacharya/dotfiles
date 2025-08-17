@@ -1,6 +1,6 @@
 -- Ollama Plugin Configuration
 -- from https://github.com/David-Kunz/gen.nvim
-return {
+return
 -- Custom Parameters (with defaults)
 {
     "David-Kunz/gen.nvim",
@@ -31,5 +31,4 @@ return {
         result_filetype = "markdown", -- Configure filetype of the result buffer
         debug = false -- Prints errors and the command which is run.
     }
-}
 }

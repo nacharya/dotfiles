@@ -1,72 +1,58 @@
+#!/bin/bash
+#
 # change the ls colors, blue is hard to see
 LS_COLORS='di=0;35' ; export LS_COLORS
 
-# find the OS we are on
-OS=`uname -s`
-MARCH=`uname -m`
-
-# make sure we have access to neovim
-if [ ${OS} == "Linux" ]; then
-   if [ ${MARCH} == "arm64" ]; then
-	export PATH=${PATH}:/usr/local/nvim-linux-arm64/bin
-   fi
-   if [ ${MARCH} == "x86_64" ]; then
-	export PATH=${PATH}:/usr/local/nvim-linux-x86_64/bin
-   fi
-   NVIM_VERS=`nvim --version`
-fi
-
-if [ ${OS} == "Darwin" ]; then
-   # Note: it gets default install at /usr/local/bin
-   NVIM_VERS=`nvim --version`
-fi
-
 # 
-if [ -f ~/.config/xenv/env ]; then
-  . ~/.config/xenv/env
+if [ -f ~/.config/xenv/genai.sh ]; then
+  . ~/.config/xenv/genai.sh
 fi
 
-if [ -f ~/.config/xenv/aliases ]; then
-	. ~/.config/xenv/aliases
-fi
 
-# moved this to .bash_profile
-if [ -f ~/.config/xenv/gitenv ]; then
-	. ~/.config/xenv/gitenv
-fi
-#
-if [ -f ~/.config/xenv/langenv ]; then
-    # go lang
-    export PATH=${PATH}:/usr/local/go/bin
-    
-    # Rust
-    if [ -f ~/.cargo/env ]; then
-        . ~/.cargo/env
-    fi
-	  . ~/.config/xenv/langenv
-fi
+# find the OS we are on
+OS=$(uname -s)
+MARCH=$(uname -m)
 
 # All Mac OS X, Sort out Arch x86_64 vs ARM
-if [ $OS == "Darwin" ]; then
+if [ "$OS" == "Darwin" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
-  echo $OS $USER $TERM_PROGRAM $MARCH
+  echo "$OS" "$USER" "$TERM_PROGRAM" "$MARCH"
   # set path according to installed apps from homebrew
   export PATH=/opt/homebrew/bin:${PATH}
+  # now add the VSCode 
   # adding a path to visual studio so we can call it from Command line
   export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
   # now add the personal stuff
   BINPATH=$OS"_"$MARCH
-  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin:$HOME/.local/bin
 fi
 
 # All Linux , Sort out Arch and types internally. 
-if [ $OS == "Linux" ]; then
+if [ "$OS" == "Linux" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
-  echo $OS $USER $TERM_PROGRAM $MARCH
-
-  BINPATH=$OS"_"$MARCH
+  echo "$OS" "$USER" "$TERM_PROGRAM" "$MARCH"
   export PATH=/usr/local/bin:${PATH}
-  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+fi
+
+# std aliases
+if [ -f ~/.config/xenv/aliases ]; then
+  . ~/.config/xenv/aliases
+fi
+# moved this to .bash_profile
+if [ -f ~/.config/xenv/gitenv.sh ]; then
+  . ~/.config/xenv/gitenv.sh
+fi
+# go lang specific
+if [ -f ~/.config/xenv/goenv.sh ]; then
+  . ~/.config/xenv/goenv.sh
+fi
+# python specific
+if [ -f ~/.config/xenv/pyenv.sh ]; then
+  . ~/.config/xenv/pyenv.sh
+fi
+# rust specific
+if [ -f ~/.config/xenv/rustenv.sh ]; then
+  . ~/.config/xenv/rustenv.sh
 fi
 
 

@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:trixie-slim
 
 # Docker file to check out the environment files 
 # and install the tools we need to build
@@ -40,9 +40,7 @@ RUN npm install -g @google/gemini-cli
 
 
 # install golang
-RUN curl -fsSL https://golang.org/dl/go1.24.1.linux-arm64.tar.gz -o /tmp/go1.24.1.linux-arm64.tar.gz
-
-
+RUN apt-get install -y golang
 # install rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
