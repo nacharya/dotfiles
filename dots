@@ -24,6 +24,7 @@ function versions() {
   kitty --version
   rustc --version
   go version
+  ranger --version
 #  kubectl version
 }
 
@@ -58,6 +59,13 @@ function show() {
             ls -l ~/.config/xenv/
         else
             echo "~/.config/xenv" "not found"
+        fi
+        ;;
+    "ranger")
+        if [ -d ~/.config/ranger ]; then
+            ls -l ~/.config/ranger/
+        else
+            echo "~/.config/ranger" "not found"
         fi
         ;;
     *)
@@ -105,9 +113,12 @@ function remove_base() {
     if [ -d ~/.config/kitty ]; then
         rm -rf ~/.config/kitty
     fi
+    if [ -d ~/.config/ranger ]; then
+        rm -rf ~/.config/ranger
+    fi
 }
 
-PKGLIST="git tmux neovim fish curl kitty rustup golang kubectl"
+PKGLIST="git tmux neovim fish curl kitty rustup golang kubectl ranger"
 
 function install_pkg() {
   echo "install_pkg" $1
