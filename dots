@@ -24,7 +24,7 @@ function versions() {
   kitty --version
   rustc --version
   go version
-  kubectl version
+#  kubectl version
 }
 
 
