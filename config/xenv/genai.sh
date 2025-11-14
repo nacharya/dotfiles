@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-export OPENAI_API_KEY="${OPENAI_API_KEY}"
 
 function openai_test() {
-
   curl https://api.openai.com/v1/chat/completions \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer ${OPENAI_API_KEY}" \
@@ -16,15 +14,8 @@ function openai_test() {
     }'
 }
 
-# called looma-nabin in hugging face account under xdatanext
-export HUGGINGFACE_KEY="${HUGGINGFACE_KEY}"
-
-# Google Gemini Key
-export GEMINI_API_KEY="${GEMINI_API_KEY}"
-
 # test function to see if the key is valid
 function gemini_test() {
-
     curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}" \
       -H 'Content-Type: application/json' \
       -X POST \
@@ -39,11 +30,12 @@ function gemini_test() {
           }
         ]
       }'
-
 }
 
-export ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
 
+function unset_claude_api() {
+  unset ANTHROPIC_API_KEY
+}
 
 function anthropic_test() {
   curl "https://api.anthropic.com/v1/messages/batches" \

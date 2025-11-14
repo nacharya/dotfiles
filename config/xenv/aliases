@@ -17,3 +17,7 @@ alias cstart="colima start --arch aarch64 --vm-type=vz --vz-rosetta --mount-type
 # posting like postman, httpie, curl etc
 # installed using % uv tool install posting
 alias posting="uvx posting"
+
+
+# start avante in vim in a AI session 
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'

@@ -3,6 +3,14 @@
 # change the ls colors, blue is hard to see
 LS_COLORS='di=0;35' ; export LS_COLORS
 
+# first is to get the base environment variables
+if [ -f ~/.config/xenv/.env ]; then
+  . ~/.config/xenv/.env
+fi
+
+# Sometimes Neovim fails with MallocStackLogging set
+unset MallocStackLogging
+
 # 
 if [ -f ~/.config/xenv/genai.sh ]; then
   . ~/.config/xenv/genai.sh
@@ -24,13 +32,15 @@ if [ "$OS" == "Darwin" ]; then
   export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
   # now add the personal stuff
   BINPATH=$OS"_"$MARCH
-  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin:$HOME/.local/bin
+  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+  export PATH=$HOME/.local/bin:$PATH
 fi
 
 # All Linux , Sort out Arch and types internally. 
 if [ "$OS" == "Linux" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
   echo "$OS" "$USER" "$TERM_PROGRAM" "$MARCH"
+
   export PATH=/usr/local/bin:${PATH}
 fi
 

@@ -6,5 +6,6 @@ export KITTY_SHELL_INTEGRATION=enabled
 KITTY_INSTALLATION_DIR=/Applications/kitty.app/Contents/Resources/kitty
 KITTY_BASH_INJECT=1
 
-#
+# GenAI API Keys
+
 

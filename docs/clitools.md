@@ -6,7 +6,7 @@
 
 - neovim : My primary editor
 - VSCode : For debugging and mostly other stuff
-- zed : Looks Promising .....
+- cursor : Looks Promising .....
 
 ### Version Control
 

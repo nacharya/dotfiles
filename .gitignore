@@ -1,2 +1,5 @@
+# this is needed for the github copilot
 pack/
+# all the code env
+.env
 

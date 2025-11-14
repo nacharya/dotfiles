@@ -32,7 +32,6 @@ ruff:
 ruff-fix:
 	ruff check --fix $(DOTENV_PYTHON) 
 
-
 stop:
 	$(DOCKER) stop $(DOTENV_CTR)
 

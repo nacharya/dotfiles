@@ -35,14 +35,11 @@ require('lazy').setup({
     require 'plugins.indent-blankline',
     require 'plugins.treesitter',
     require 'plugins.bufferline',
-    require 'plugins.chatgpt',
-    require 'plugins.ollama',
     require 'plugins.autocompletion',
     require 'plugins.gitsigns',
-    require 'plugins.copilotchat',
     require 'plugins.lualine',
     require 'plugins.misc',
-    require 'plugins.mcphub',
+    require 'plugins.miscai'
 }, {
     ui = {
         -- If you have a Nerd Font, set icons to an empty table which will use the
