@@ -1,17 +1,13 @@
 #!/bin/bash
 
-function pyvers() {
-    PYTHON3=$(which python3)
-    PYVERS=$(python3 --version)
-    echo "python3 : " $PYTHON3 "version" : ${PYVERS}
-}
-
-
-pyvers
-if [[ -d "$HOME/.nstd" ]]; then 
-    source "$HOME/.nstd/bin/activate"
-    echo "Using nstd python environment"
+if ! command -v python3 &>/dev/null; then
+  return
 fi
-pyvers
 
-
+# Activate project virtualenv if present
+if [ -d "$HOME/.nstd" ]; then
+  source "$HOME/.nstd/bin/activate"
+  echo "python: $(python3 --version) [nstd env active]"
+else
+  echo "python: $(python3 --version)"
+fi

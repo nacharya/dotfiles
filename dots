@@ -22,6 +22,7 @@ function versions() {
   fish --version
   curl --version
   kitty --version
+  ghostty --version
   rustc --version
   go version
   ranger --version
@@ -54,6 +55,13 @@ function show() {
             echo "~/.config/kitty" "not found"
         fi
         ;;
+    "ghostty")
+        if [ -d ~/.config/ghostty ]; then
+            ls -l ~/.config/ghostty/
+        else
+            echo "~/.config/ghostty" "not found"
+        fi
+        ;;
     "xenv")
         if [ -d ~/.config/xenv ]; then
             ls -l ~/.config/xenv/
@@ -73,6 +81,9 @@ function show() {
         ls -ld ~/.config/nvim/
         ls -ld ~/.config/tmux/
         ls -ld ~/.config/kitty/
+        if [ -d ~/.config/ghostty/ ]; then
+          ls -ld ~/.config/ghostty/
+        fi
         if [ -d ~/.config/xenv/ ]; then
           ls -ld ~/.config/xenv/
         else
@@ -91,10 +102,13 @@ function install_base() {
         cp -R ./config/* ~/.config
     fi
 
-    if [ -f ~/.bash_profile ]; then 
-        cat ./env/bash_profile >> ~/.bash_profile
+    if [ -f ~/.bash_profile ]; then
+        # Only append if xbashrc is not already sourced
+        if ! grep -q "xenv/xbashrc" ~/.bash_profile; then
+            cat ./env/bash_profile >> ~/.bash_profile
+        fi
     else
-	cp ./env/bash_profile ~/.bash_profile
+        cp ./env/bash_profile ~/.bash_profile
     fi
 }
 
@@ -112,6 +126,9 @@ function remove_base() {
     fi
     if [ -d ~/.config/kitty ]; then
         rm -rf ~/.config/kitty
+    fi
+    if [ -d ~/.config/ghostty ]; then
+        rm -rf ~/.config/ghostty
     fi
     if [ -d ~/.config/ranger ]; then
         rm -rf ~/.config/ranger

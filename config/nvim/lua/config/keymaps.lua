@@ -120,29 +120,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
--- ChatGPT
-vim.keymap.set('n', '<leader>cg', ':ChatGPTEditWithInstructions<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cga', ':ChatGPTActAs<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgc', ':ChatGPTRun complete_code<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgo', ':ChatGPTRun optimize_code<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgs', ':ChatGPTRun summarize<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgx', ':ChatGPTRun explain_code<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cgb', ':ChatGPTRun fix_bugs<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>cggc', ':ChatGPTRun grammar_correction<CR>', { noremap = true, silent = false })
+-- Claude Code (claude-code.nvim) — toggle terminal
+vim.keymap.set('n', '<leader>cc', ':ClaudeCode<CR>', { noremap = true, silent = true, desc = 'Toggle Claude Code' })
 
--- Copilot
-vim.keymap.set('i', '<C-l>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
-
--- MCP Hub
-vim.keymap.set('n', '<leader>mcp', ':MCPHub<CR>', { noremap = true, silent = false })
-
--- Codecompanion
-vim.keymap.set('n', '<leader>acc', ':CodeCompanionChat<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>aca', ':CodeCompanionAction<CR>', { noremap = true, silent = false })
-
--- Ollama local queries 
-vim.keymap.set({ 'n', 'v' }, '<leader>oo', ':Gen<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>os', ':Gen Summarize<CR>')
+-- CodeCompanion (multi-adapter AI chat/inline)
+vim.keymap.set('n', '<leader>acc', ':CodeCompanionChat<CR>', { noremap = true, silent = false, desc = 'AI chat' })
+vim.keymap.set({ 'n', 'v' }, '<leader>aca', ':CodeCompanionActions<CR>', { noremap = true, silent = false, desc = 'AI actions' })
+vim.keymap.set({ 'n', 'v' }, '<leader>ai', ':CodeCompanion<CR>', { noremap = true, silent = false, desc = 'AI inline' })
 
 
 -- Oil for File Explorer and management

@@ -11,7 +11,7 @@ if [ -d ~/.local/state/nvim ]; then
 fi
 
 if [ -d ~/.cache/nvim ]; then
-    echo "Removing ~/cache/nvim"
+    echo "Removing ~/.cache/nvim"
     rm -rf ~/.cache/nvim
 fi
 

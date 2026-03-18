@@ -1,23 +1,22 @@
+# editor
 alias vim="nvim"
 
-#tmux commands
+# tmux
 alias tmls="tmux ls"
 alias tmn="tmux new -s"
 alias tma="tmux attach-session -t"
 alias tmk="tmux kill-session -t"
 alias tmrls='ls ~/.local/share/tmux/resurrect/'
 
-# ranger
+# file management
 alias r="ranger"
 
-# lima and colima
-#
+# colima / kubernetes
 alias cstart="colima start --arch aarch64 --vm-type=vz --vz-rosetta --mount-type 9p"
+alias start_k8s="colima start --kubernetes"
 
-# posting like postman, httpie, curl etc
-# installed using % uv tool install posting
+# http clients — install: uv tool install posting
 alias posting="uvx posting"
 
-
-# start avante in vim in a AI session 
-alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+# mcp inspector
+alias mcpjam="npx @mcpjam/inspector@latest"

@@ -4,8 +4,7 @@ We go through common tmux commands we need to use to control tmux painlessly.
 Used to tmux commands a lot but sometimes we forget them. This document is for a quick reminder
 
 
-## Basic Commands and Keys 
-
+## Basic Commands and Keys
 ### Some common aliases
 ```
 alias tmls="tmux ls"
@@ -15,8 +14,7 @@ alias tmk="tmux kill-session -t"
 alias tmrls='ls ~/.local/share/tmux/resurrect/'
 ```
 
-Start a new tmux session 
-
+Start a new tmux session
 ```
 % tmux new -s <session_name>
 % tmn <session_name>

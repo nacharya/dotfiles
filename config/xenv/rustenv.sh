@@ -1,6 +1,10 @@
 #!/bin/bash
 
-RUSTCBIN=$(which rustc)
-CARGO=$(which cargo)
+# Add cargo binaries to PATH
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
-echo "rustc " $(rustc --version) " cargo: " $(cargo --version)
+if command -v rustc &>/dev/null; then
+  echo "rust: $(rustc --version) | cargo: $(cargo --version)"
+fi

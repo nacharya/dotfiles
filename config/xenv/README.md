@@ -1,7 +1,6 @@
 # xenv
 
-This is a simple collection of dot files and scripts for a simple 
-personalized development environment setup on Unix-like systems.
+This is a simple collection of dot files and scripts for a simplepersonalized development environment setup on Unix-like systems.
 
 ## Features
 
@@ -24,10 +23,7 @@ By default, the setup taked the `.env` file
 
 Following language environments are supported:
 
-- Rust 
+- Rust
 - Python3
-- Go 
+- Go
 - Node.js
-
-
-

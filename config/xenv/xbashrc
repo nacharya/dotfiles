@@ -1,68 +1,64 @@
 #!/bin/bash
 #
-# change the ls colors, blue is hard to see
-LS_COLORS='di=0;35' ; export LS_COLORS
+# xbashrc — main shell environment, sourced from ~/.bash_profile
 
-# first is to get the base environment variables
-if [ -f ~/.config/xenv/.env ]; then
-  . ~/.config/xenv/.env
+# Terminal: make directory listings readable (default blue is too dark)
+LS_COLORS='di=0;35'; export LS_COLORS
+
+# --- Detect OS and architecture ---
+OS=$(uname -s)
+MARCH=$(uname -m)
+
+# macOS
+if [ "$OS" == "Darwin" ]; then
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+  echo "$OS $USER ${TERM_PROGRAM:-terminal} $MARCH"
+  export PATH=/opt/homebrew/bin:${PATH}
+  export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+  BINPATH="${OS}_${MARCH}"
+  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
+  export PATH=$HOME/.local/bin:$PATH
+fi
+
+# Linux
+if [ "$OS" == "Linux" ]; then
+  echo "$OS $USER ${TERM_PROGRAM:-terminal} $MARCH"
+  export PATH=/usr/local/bin:$HOME/.local/bin:${PATH}
 fi
 
 # Sometimes Neovim fails with MallocStackLogging set
 unset MallocStackLogging
 
-# 
+# --- Environment defaults (non-secret) ---
+if [ -f ~/.config/xenv/env.sh ]; then
+  . ~/.config/xenv/env.sh
+fi
+
+# --- Secrets and machine-specific overrides ---
+if [ -f ~/.config/xenv/.env ]; then
+  . ~/.config/xenv/.env
+fi
+
+# --- AI / GenAI tools ---
 if [ -f ~/.config/xenv/genai.sh ]; then
   . ~/.config/xenv/genai.sh
 fi
 
-
-# find the OS we are on
-OS=$(uname -s)
-MARCH=$(uname -m)
-
-# All Mac OS X, Sort out Arch x86_64 vs ARM
-if [ "$OS" == "Darwin" ]; then
-  export BASH_SILENCE_DEPRECATION_WARNING=1
-  echo "$OS" "$USER" "$TERM_PROGRAM" "$MARCH"
-  # set path according to installed apps from homebrew
-  export PATH=/opt/homebrew/bin:${PATH}
-  # now add the VSCode 
-  # adding a path to visual studio so we can call it from Command line
-  export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
-  # now add the personal stuff
-  BINPATH=$OS"_"$MARCH
-  export PATH=$PATH:~/Workspace/bin/$BINPATH:~/go/bin
-  export PATH=$HOME/.local/bin:$PATH
-fi
-
-# All Linux , Sort out Arch and types internally. 
-if [ "$OS" == "Linux" ]; then
-  export BASH_SILENCE_DEPRECATION_WARNING=1
-  echo "$OS" "$USER" "$TERM_PROGRAM" "$MARCH"
-
-  export PATH=/usr/local/bin:${PATH}
-fi
-
-# std aliases
+# --- Aliases ---
 if [ -f ~/.config/xenv/aliases ]; then
   . ~/.config/xenv/aliases
 fi
-# moved this to .bash_profile
+
+# --- Language environments ---
 if [ -f ~/.config/xenv/gitenv.sh ]; then
   . ~/.config/xenv/gitenv.sh
 fi
-# go lang specific
 if [ -f ~/.config/xenv/goenv.sh ]; then
   . ~/.config/xenv/goenv.sh
 fi
-# python specific
 if [ -f ~/.config/xenv/pyenv.sh ]; then
   . ~/.config/xenv/pyenv.sh
 fi
-# rust specific
 if [ -f ~/.config/xenv/rustenv.sh ]; then
   . ~/.config/xenv/rustenv.sh
 fi
-
-

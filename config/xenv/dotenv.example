@@ -1,11 +1,7 @@
-export MYHOME=${HOME}
-
-# kitty related 
-export KITTY_BASH_UNEXPORT_HISTFILE=1
-export KITTY_SHELL_INTEGRATION=enabled
-KITTY_INSTALLATION_DIR=/Applications/kitty.app/Contents/Resources/kitty
-KITTY_BASH_INJECT=1
+# .env — machine-specific secrets and overrides
+# Copy this file to ~/.config/xenv/.env and fill in real values.
+# This file is NOT tracked in git.
 
 # GenAI API Keys
-
-
+export GEMINI_API_KEY=""
+export ANTHROPIC_API_KEY=""

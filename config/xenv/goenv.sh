@@ -1,5 +1,5 @@
 #!/bin/bash
 
-GOBIN=$(which go)
-echo "Using golang: " "${GOBIN}"
-echo "$(go version)"
+if command -v go &>/dev/null; then
+  echo "go: $(go version)"
+fi

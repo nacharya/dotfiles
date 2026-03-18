@@ -77,51 +77,36 @@ return {
       }
   },
   {
-      "olimorris/codecompanion.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+    },
+    opts = {
+      adapters = {
+        anthropic = function()
+          return require("codecompanion.adapters").extend("anthropic", {
+            schema = {
+              model = { default = "claude-sonnet-4-20250514" },
+            },
+          })
+        end,
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            schema = {
+              model = { default = "gemini-2.0-flash" },
+            },
+          })
+        end,
       },
-      opts = {
-        log_level = "DEBUG",
-        "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "markdown", "codecompanion" },
-        strategies = {
-          chat = {
-            adapter = "copilot",
-            keymaps = {
-              send = {
-                modes = { n = "<C-s>", i = "<C-s>" },
-                opts = {},
-              },
-              close = {
-                modes = { n = "<C-c>", i = "<C-c>" },
-                opts = {},
-              },
-            }
-          },
-          inline = {
-            adapter = "copilot",
-          },
-          agent = {
-            adapter = "copilot",
-          },
-          agent = {
-            adapter = "copilot",
-          },
-        },
-      },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true
-          }
-        }
+      strategies = {
+        chat    = { adapter = "anthropic" },
+        inline  = { adapter = "anthropic" },
+        agent   = { adapter = "anthropic" },
       },
     },
+  },
     {
       "echasnovski/mini.diff",
       config = function()
